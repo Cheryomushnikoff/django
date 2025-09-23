@@ -13,13 +13,4 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-class User(models.Model):
-    name = models.CharField(max_length=30, verbose_name='Имя')
-    surname = models.CharField(max_length=30, verbose_name='Фамилия')
-    created_at =models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name_plural = 'Пользователи'
-        verbose_name = 'Пользователь'
-        db_table = 'blog_users'
 
