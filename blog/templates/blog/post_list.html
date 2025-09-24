@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cписок постов</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <h1>Cписок постов сайта</h1>
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post-container" style="border: 1px solid black; padding: 10px; border-radius: 5px; margin-bottom: 10px; width: 300px">
+                <h2>Заголовок поста:<a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+                <p> Текст поста: {{ post.text }}</p>
+                <small>Дата создания: {{ post.created_at | date:'d.m.Y H:i' }}</small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>К сожалению на данный момент нет постов</p>
+    {% endif %}
+</body>
+</html>
