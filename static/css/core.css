@@ -4,4 +4,10 @@
     box-sizing: border-box;
 }
 
-.post-container {}
+.post-container {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
