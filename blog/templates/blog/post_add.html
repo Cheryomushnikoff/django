@@ -2,17 +2,28 @@
 {% block title %}Опубликовать пост{% endblock title %}
 {% block content %}
     <h1>Создать новый пост</h1>
-    <form action="{% url 'new_post' %}" method="POST">
+    <form method="POST">
+    <!--Можно передать ссылку в атрибут action-->
         {% csrf_token %}
         <div>
             <label for="titlePost">Заголовок поста:</label>
-            <input type="text" name="titlePost" id="titlePost" placeholder="максимальная длина 200 символов" required>
-
+            <input
+                    type="text"
+                    name="titlePost"
+                    id="titlePost"
+                    placeholder="максимальная длина 200 символов"
+                    required
+                    value = '{{title|default:""}}'>
+            {% if errors.title %}
+                <div style="color: red">{{errors.title}}</div>
+            {% endif %}
         </div>
         <div>
             <label for="textPost">Текст поста:</label>
-            <textarea name="textPost" id="textPost" rows="3"></textarea>
-
+            <textarea name="textPost" id="textPost" rows="3">{{text|default:""}}</textarea>
+            {% if errors.text %}
+                <div style="color: red">{{errors.text}}</div>
+            {% endif %}
         </div>
         <input type="submit" value="Опубликовать пост">
     </form>
